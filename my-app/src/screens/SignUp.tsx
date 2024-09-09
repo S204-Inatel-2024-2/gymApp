@@ -56,8 +56,9 @@ export function SignUp() {
               autoCapitalize="none"
             />
             <Input placeholder="Senha" secureTextEntry />
+            <Input placeholder="Confirmar senha" secureTextEntry />
 
-            <Button title="Criar e acessar" />
+            <Button title="Cadastrar" />
           </Center>
 
           <Button
