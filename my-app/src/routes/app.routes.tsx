@@ -30,7 +30,7 @@ export function AppRoutes() {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarActiveTintColor: tokens.colors.orange500,
-        tabBarInactiveTintColor: tokens.colors.coolGray200,
+        tabBarInactiveTintColor: tokens.colors.black,
         tabBarStyle:{
             backgroundColor: tokens.colors.coolGray600,
             borderTopWidth: 0,
@@ -42,19 +42,25 @@ export function AppRoutes() {
       <Screen 
         name='home'
         component={Home}
-        options={{ tabBarIcon: ({ color })=> <HomeSvg fill={color} width={iconSize} height={iconSize}/>}}
+        options={{
+          tabBarButton: () => null
+      }}
       />
 
       <Screen 
         name='workouts'
         component={Workouts}
-        options={{ tabBarIcon: ({ color })=> <HomeSvg fill={color} width={iconSize} height={iconSize}/>}}
+        options={{
+          tabBarButton: () => null
+      }}
       />
 
       <Screen 
         name='profile'
         component={Profile}
-        options={{ tabBarIcon: ({ color })=> <HomeSvg fill={color} width={iconSize} height={iconSize}/>}}
+        options={{
+          tabBarButton: () => null
+      }}
       />
 
       <Screen 

@@ -21,7 +21,7 @@ export default function App() {
       <GluestackUIProvider config={config}>
           <StatusBar
             barStyle="light-content"
-            backgroundColor="white"
+            backgroundColor="transparent"
             translucent
           />
           {fontsLoaded ? <Routes /> : <Loading />}

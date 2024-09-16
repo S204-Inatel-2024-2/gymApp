@@ -6,20 +6,20 @@ type Props = ComponentProps<typeof InputField>
 export function Input({ ...props }: Props) {
   return (
     <GluestackInput
-      bg="$gray700"
+      bg="$white"
       h="$16"
       px="$4"
       borderWidth="$0"
-      borderRadius="$md"
+      borderRadius="$xl"
       $focus={{
         borderWidth: 1,
-        borderColor: "$orange500"
+        borderColor: "$gray700"
       }}
     >
       <InputField
-        color="$white"
+        color="$black"
         fontFamily="$body"
-        placeholderTextColor="$gray300"
+        placeholderTextColor="$black"
         {...props}
       />
     </GluestackInput>

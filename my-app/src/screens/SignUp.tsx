@@ -1,14 +1,14 @@
+import React, { useState } from 'react';
 import {
   Center,
   Heading,
   Image,
   ScrollView,
-  Text,
   VStack,
+  Progress,
 } from '@gluestack-ui/themed';
 
 import BackgroundImg from '@assets/Backgroud.png';
-import Logo from '@assets/Logo.png'; // If Logo is an image, use Image component
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
@@ -18,15 +18,18 @@ import { useNavigation } from '@react-navigation/native';
 export function SignUp() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
-  function handleGoBack() {
-    navigation.goBack(); // Call goBack method
+  const [progress, setProgress] = useState(0);
+
+  function handleNext() {
+    if (progress < 100) {
+      setProgress(progress + 20);
+    } else {
+      navigation.goBack(); 
+    }
   }
 
   return (
-    <ScrollView
-      contentContainerStyle={{ flexGrow: 1 }}
-      showsVerticalScrollIndicator={false}
-    >
+    <VStack flex={1}>
       <VStack flex={1}>
         <Image
           w="$full"
@@ -37,39 +40,43 @@ export function SignUp() {
         />
 
         <VStack flex={1} px="$10" pb="$16">
-          <Center my="$24">
-          <Image w="$1/2" source={Logo} alt="Logo" />
-
-            <Text color="$white" fontSize="$sm">
-              Treine sua mente e seu corpo
-            </Text>
-          </Center>
 
           <Center flex={1} gap="$2">
-            <Heading color="$white">Crie sua conta</Heading>
-
-            <Input placeholder="Nome" />
-
-            <Input
-              placeholder="E-mail"
-              keyboardType="email-address"
-              autoCapitalize="none"
+            <Heading color="$white">Meu Perfil</Heading>
+            <Progress
+              value={progress}
+              w="$full"
+              h="$3"
+              mt="$4"
             />
-            <Input placeholder="Senha" secureTextEntry />
-            <Input placeholder="Confirmar senha" secureTextEntry />
-
-            <Button title="Cadastrar" />
           </Center>
 
+          <Heading color="$orange500" fontSize={30}>
+            Quais são suas métricas corporais?
+          </Heading>
+
+          <Heading color="$orange500" fontSize={15}>Sexo</Heading>
+          <Input
+            placeholder="Selecione o sexo"
+          />
+          <Heading color="$orange500" fontSize={15}>Data de Nascimento</Heading>
+          <Input placeholder="DD/MM/AA" />
+          <Heading color="$orange500" fontSize={15}>Peso</Heading>
+          <Input placeholder="Peso em kg" />
+          <Heading color="$orange500" fontSize={15}>Altura</Heading>
+          <Input placeholder="Altura em cm" />
+          <Heading color="$orange500" fontSize={15}>Meta de peso</Heading>
+          <Input placeholder="Meta de peso em kg" />
+
           <Button
-            title="Voltar para o login"
-            variant="outline"
+            title="Próximo"
             mt="$12"
             mb="$3"
             ml="$16"
-            onPress={handleGoBack} />
+            onPress={handleNext} 
+          />
         </VStack>
       </VStack>
-    </ScrollView>
+    </VStack>
   );
 }

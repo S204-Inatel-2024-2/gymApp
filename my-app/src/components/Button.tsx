@@ -19,12 +19,12 @@ import {
   }: Props) {
     return(
       <GluestackButton
-        w={variant === 'outline' ? "$2/3" : "$1/2"}
+        w={variant === 'outline' ? "$2/3" : "$2/3"}
         h="$16"
-        bg={variant === 'outline' ? 'transparent' : '$orange700'}
+        bg={variant === 'outline' ? '$white' : '$orange700'}
         borderWidth={variant === 'outline' ? '$1' : '$0'}
         borderColor="$orange500"
-        rounded="$sm"
+        rounded="$xl"
         $active-bg={variant === 'outline' ? '$orange500' : '$orange500'}
         disabled={isLoading}
         {...props}>
@@ -32,7 +32,7 @@ import {
           <ButtonSpinner color="$white" />
         ) : (
             <Text
-            color='$white'
+            color={variant === 'outline' ? '$orange500' : '$white'}
             fontFamily="$heading"
             fontSize="$sm">
             {title}
