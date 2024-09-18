@@ -4,18 +4,23 @@ import { Home } from '@screens/Home';
 import { Exercise } from '@screens/Exercise';
 import { Workouts } from '@screens/Workouts';
 import { Profile } from '@screens/Profile';
-import { ProfileDefinition } from '@screens/Profile_definition';
 import { gluestackUIConfig } from '@gluestack-ui/config';
 
 
 import HomeSvg from "@assets/Logo.png"
 import { Platform } from 'react-native';
+import { MyProfiletwo } from '@screens/MyProfileTwo';
+import { MyProfileThree } from '@screens/MyProfileThree';
+import { PersonalityTrainer } from '@screens/PersonalityTrainer';
 type AppRoutes = {
     home: undefined;
     exercise: undefined;
     profile: undefined;
     workouts: undefined;
     profileDefinition: undefined;
+    myprofiletwo: undefined;
+    myprofilethree: undefined;
+    personalityTrainer: undefined;
   }
   
   export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -71,8 +76,22 @@ export function AppRoutes() {
         }}
       />
       <Screen 
-        name='profileDefinition'
-        component={ProfileDefinition}
+        name='myprofiletwo'
+        component={MyProfiletwo}
+        options={{
+            tabBarButton: () => null
+        }}
+      />
+      <Screen 
+        name='myprofilethree'
+        component={MyProfileThree}
+        options={{
+            tabBarButton: () => null
+        }}
+      />
+      <Screen 
+        name='personalityTrainer'
+        component={PersonalityTrainer}
         options={{
             tabBarButton: () => null
         }}

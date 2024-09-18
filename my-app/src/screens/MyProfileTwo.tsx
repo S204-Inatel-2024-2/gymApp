@@ -15,7 +15,7 @@ import { Button } from '@components/Button';
 import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 import { useNavigation } from '@react-navigation/native';
 
-export function SignUp() {
+export function MyProfiletwo() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
   const [progress, setProgress] = useState(0);
@@ -23,7 +23,7 @@ export function SignUp() {
   function handleNext() {
     if (progress < 100) {
       setProgress(progress + 20);
-      navigation.navigate("personalityTrainer");
+      navigation.navigate("myprofilethree");
     } else {
       navigation.goBack(); 
     }
@@ -42,7 +42,7 @@ export function SignUp() {
 
         <VStack flex={1} px="$10" pb="$16">
 
-          <Center flex={1} gap="$2">
+          <Center gap="$2" mt={30} mb={30}>
             <Heading color="$white">Meu Perfil</Heading>
             <Progress
               value={progress}
@@ -53,21 +53,10 @@ export function SignUp() {
           </Center>
 
           <Heading color="$orange500" fontSize={30}>
-            Quais são suas métricas corporais?
+            Qual é o seu objetivo?
           </Heading>
 
-          <Heading color="$orange500" fontSize={15}>Sexo</Heading>
-          <Input
-            placeholder="Selecione o sexo"
-          />
-          <Heading color="$orange500" fontSize={15}>Data de Nascimento</Heading>
-          <Input placeholder="DD/MM/AA" />
-          <Heading color="$orange500" fontSize={15}>Peso</Heading>
-          <Input placeholder="Peso em kg" />
-          <Heading color="$orange500" fontSize={15}>Altura</Heading>
-          <Input placeholder="Altura em cm" />
-          <Heading color="$orange500" fontSize={15}>Meta de peso</Heading>
-          <Input placeholder="Meta de peso em kg" />
+          
 
           <Button
             title="Próximo"
