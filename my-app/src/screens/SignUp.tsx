@@ -38,24 +38,6 @@ export function SignUp() {
     }
   };
 
-  // Função para carregar os dados do AsyncStorage
-  const loadData = async () => {
-    try {
-      const storedData = await AsyncStorage.getItem('@formData');
-      if (storedData) {
-        setFormData(JSON.parse(storedData));
-        console.log('Dados carregados do AsyncStorage');
-      }
-    } catch (error) {
-      console.error('Erro ao carregar dados:', error);
-    }
-  };
-
-  // Carregar os dados ao iniciar
-  useEffect(() => {
-    loadData();
-  }, []);
-
   // Função para resetar os campos do formulário
   const resetForm = () => {
     setFormData({
@@ -67,19 +49,29 @@ export function SignUp() {
     });
   };
 
+  // Resetar os dados ao entrar na página
+  useEffect(() => {
+    resetForm();
+  }, []);
+
   const handleNext = () => {
     if (progress < 100) {
       saveData(); // Salvar os dados antes de navegar
       setProgress(progress + 20);
-      resetForm(); // Resetar os campos do formulário
       navigation.navigate("personalityTrainer");
     } else {
       navigation.goBack();
     }
   };
 
-  const handleChange = (field: string, value: string) => {
-    setFormData((prevData) => ({ ...prevData, [field]: value }));
+  const handleChange = async (field: string, value: string) => {
+    const updatedFormData = { ...formData, [field]: value };
+    setFormData(updatedFormData);
+    try {
+      await AsyncStorage.setItem('@formData', JSON.stringify(updatedFormData));
+    } catch (error) {
+      console.error('Erro ao salvar automaticamente:', error);
+    }
   };
 
   return (
